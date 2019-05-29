@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tile Expert</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a href="#!" class="brand-logo"><img src="img/logo.png"></a>
+
+        <ul class="hide-on-med-and-down" id="menu">
+            <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Ссылки<i class="material-icons right">arrow_drop_down</i></a>
+            </li>
+            <li><a class="dropdown-trigger" href="#">Контакты</a></li>
+            <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Теги<i class="material-icons right">arrow_drop_down</i></a>
+            </li>
+            <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Просьбы<i class="material-icons right">arrow_drop_down</i></a>
+            </li>
+            <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Избранное<i class="material-icons right">arrow_drop_down</i></a>
+            </li>
+            <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Посещения<i class="material-icons right">arrow_drop_down</i></a>
+            </li>
+
+            <div class="search-bar" id="search-bar">
+                <div class="search">
+                    <input type="text" onfocus="onFocusSearch()">
+                    <button class="clear hide"></button>
+                    <button>Найти</button>
+                </div>
+            </div>
+        </ul>
+
+
+        <ul class="hide-on-med-and-down">
+            <li id="search-icon" onclick="onClickSearchIcon()"><a href="#"><i class="material-icons">search</i></a></li>
+            <li><a href="#"><i class="material-icons">add_circle</i></a></li>
+        </ul>
+
+        <div class="search-bar-container">
+            <div class="search-bar" id="mob-search-bar">
+                <div class="search">
+                    <input type="text" onfocus="onFocusSearch()">
+                    <button class="clear hide hide"></button>
+                    <button>Найти</button>
+                </div>
+            </div>
+
+            <ul class="search-icon right">
+                <li id="mob-search-icon" onclick="onClickMobSearchIcon()"><a href="#"><i
+                        class="material-icons">search</i></a></li>
+            </ul>
+        </div>
+
+        <ul class="right replies">
+            <li><a href="#"><i class="material-icons">mail_outline</i></a></li>
+            <li><a href="#"><i class="material-icons">notifications_none</i></a> <b class="notifications_count">18</b>
+            </li>
+            <li><a href="#" class="account_circle"></a></li>
+        </ul>
+
+
+    </div>
+
+    <ul id="slide-out" class="sidenav">
+        <li><a href="#">First Sidebar Link</a></li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="dropdown-trigger" href="#" data-target="dropdown1">
+                        Ссылки
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-trigger" href="#">Контакты</a>
+                </li>
+                <li>
+                    <a class="dropdown-trigger" href="#" data-target="dropdown1">
+                        Теги
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-trigger" href="#" data-target="dropdown1">
+                        Просьбы <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-trigger" href="#" data-target="dropdown1">
+                        Избранное
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-trigger" href="#" data-target="dropdown1">
+                        Посещения
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+
+<div class="card expanded-search hide">
+    <div class="card-content expanded-search-content white-text">
+        <p>
+            <label>
+                <input type="checkbox" class="filled-in"/>
+                <span>Мои</span>
+            </label>
+            <input placeholder="Aвтор" id="first_name" type="text" class="validate">
+        </p>
+
+        <p>
+            <label><span><b>Сортировать по:</b></span></label>
+            <select>
+                <option value="" disabled selected>дате</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+        </p>
+
+        <p>
+            <label>
+                <input type="checkbox" class="filled-in"/>
+                <span>я участник</span>
+            </label>
+
+            <label>
+                <input type="checkbox" class="filled-in" checked="checked"/>
+                <span>в заголовке</span>
+            </label>
+
+            <label>
+                <input type="checkbox" class="filled-in"/>
+                <span>строгий поиск</span>
+            </label>
+        </p>
+
+    </div>
+</div>
+
+</body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const elems = document.querySelectorAll('.sidenav');
+    M.Sidenav.init(elems);
+
+    const selects = document.querySelectorAll('select');
+    M.FormSelect.init(selects);
+  });
+
+  onClickSearchIcon = () => {
+    document.getElementById("menu").setAttribute("style", "visibility: hidden");
+    document.getElementById("search-icon").setAttribute("style", "visibility: hidden");
+    document.getElementById("search-bar").setAttribute("class", "opened");
+  };
+
+  onClickMobSearchIcon = () => {
+    document.getElementsByTagName("nav")[0].setAttribute("style", "height: 64px");
+    document.getElementsByClassName("replies")[0].setAttribute("style", "visibility: hidden");
+    document.getElementById("mob-search-icon").setAttribute("style", "visibility: hidden");
+    document.getElementById("mob-search-bar").setAttribute("class", "opened");
+  };
+
+  onFocusSearch = () => {
+    document.getElementsByClassName("expanded-search")[0].classList.remove("hide");
+  };
+
+  document.addEventListener("click", (evt) => {
+    const expandedSearch = document.getElementsByClassName("expanded-search")[0];
+    const input = document.getElementById('search-bar').getElementsByTagName('input')[0];
+    const mobInput = document.getElementById('mob-search-bar').getElementsByTagName('input')[0];
+
+    let targetElement = evt.target; // clicked element
+
+    if (targetElement !== expandedSearch && expandedSearch.classList.contains('hide') || (targetElement === input || targetElement === mobInput)) {
+      return;
+    } else if (targetElement.offsetParent !== expandedSearch
+      && (!targetElement.offsetParent || targetElement.offsetParent.offsetParent !== expandedSearch)) {
+
+      document.getElementsByClassName("expanded-search")[0].classList.add("hide");
+      document.getElementById("mob-search-bar").classList.remove("opened");
+      document.getElementById("search-bar").classList.remove("opened");
+      document.getElementsByClassName("replies")[0].setAttribute("style", "visibility: visible");
+      document.getElementById("mob-search-icon").setAttribute("style", "visibility: visible");
+      document.getElementById("menu").setAttribute("style", "visibility: visible");
+      document.getElementById("search-icon").setAttribute("style", "visibility: visible");
+
+      if (document.body.clientWidth < 500) {
+        document.getElementsByTagName("nav")[0].setAttribute("style", "height: 120px");
+      }
+    }
+
+  });
+
+</script>
+</html>
